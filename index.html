@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- Không cho công cụ tìm kiếm lập chỉ mục (ảnh & nội dung riêng tư) -->
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta name="referrer" content="no-referrer">
+<meta name="color-scheme" content="only light">
+<meta name="theme-color" content="#FFE4EC">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23C72C63' d='M12 21s-7.5-4.6-7.5-10.4A4.4 4.4 0 0 1 12 7.4a4.4 4.4 0 0 1 7.5 3.2C19.5 16.4 12 21 12 21z'/%3E%3C/svg%3E">
+<title>Một món quà nhỏ dành cho bạn</title>
+<meta property="og:title" content="Một món quà nhỏ dành cho cậu">
+<meta property="og:description" content="Ghép xong bức ảnh để mở thiệp 20/10 nhé!">
+
+<!-- Font: Be Vietnam Pro (chữ thường) + Dancing Script (chữ viết tay) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<!-- Trái tim bay lơ lửng phía sau (JS tự rải) -->
+<div id="timNen" class="tim-nen" aria-hidden="true"></div>
+
+<!-- Nút nhạc: dùng chung cho mọi màn, hiện sau khi chạm mở quà -->
+<button id="nutNhac" class="nut-nhac" type="button" aria-label="Bật nhạc nền" hidden>
+  <svg class="nut-nhac__not" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+  <span class="nut-nhac__song" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+</button>
+<audio id="nhac" preload="none" loop></audio>
+
+<main class="khung">
+
+  <!-- ===== ĐANG TẢI ===== -->
+  <section id="manTai" class="man man--giua" aria-live="polite">
+    <div class="tim-dap" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#hinhTim"></use></svg></div>
+    <p class="chu-mo">Đang mở quà…</p>
+  </section>
+
+  <!-- ===== LINK KHÔNG ĐÚNG ===== -->
+  <section id="manLoi" class="man man--giua">
+    <div class="vong-trang bay" aria-hidden="true">
+      <svg width="96" height="96" viewBox="0 0 24 24">
+        <path d="M12 21s-7.5-4.6-7.5-10.4A4.4 4.4 0 0 1 12 7.4l-1.2 3.4 2.2 1.6-1.4 3.2 1.6 2.4z" fill="#F8BBD0"></path>
+        <path d="M12 7.4a4.4 4.4 0 0 1 7.5 3.2C19.5 16.4 12 21 12 21l1.2-3-1.6-2.4 1.4-3.2-2.2-1.6z" fill="#F48FB1" transform="translate(1.2 0.4)"></path>
+      </svg>
+    </div>
+    <h1 class="chu-tay tieu-de-lon">Ôi, link chưa đúng rồi</h1>
+    <p id="chuLoi" class="chu-mo doan-giua">Mỗi bạn có một đường link riêng. Cậu mở lại đúng đường link người gửi đã nhắn cho cậu nhé.</p>
+    <p class="the-goi-y">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"></path><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"></path></svg>
+      <span>Link đúng có dạng …/?id=<strong>mã-riêng</strong></span>
+    </p>
+  </section>
+
+  <!-- ===== MÀN 1: MỞ QUÀ ===== -->
+  <section id="manMoQua" class="man">
+    <div class="thanh-tren">
+      <span class="vien-ngay"><b>20 · 10</b> Ngày Phụ nữ Việt Nam</span>
+    </div>
+
+    <div class="phong-bi" aria-hidden="true">
+      <div class="phong-bi__thu">
+        <div class="chu-tay phong-bi__gui">Gửi <span data-ten>bạn</span>,</div>
+        <i></i><i></i><i></i>
+      </div>
+      <svg class="phong-bi__tui" viewBox="0 0 300 150">
+        <path d="M0 18 Q0 0 18 0 L150 78 L282 0 Q300 0 300 18 L300 132 Q300 150 282 150 L18 150 Q0 150 0 132 Z" fill="#F8BBD0"></path>
+        <path d="M0 132 L118 64 M300 132 L182 64" stroke="#F48FB1" stroke-width="2" fill="none"></path>
+        <path d="M0 18 L150 98 L300 18" stroke="#ffffff" stroke-opacity="0.7" stroke-width="2" fill="none"></path>
+      </svg>
+      <span class="con-dau"><svg viewBox="0 0 24 24"><use href="#hinhTim"></use></svg></span>
+    </div>
+
+    <h1 class="chu-tay tieu-de-lon">Gửi <span data-ten>bạn</span></h1>
+    <p class="chu-mo doan-giua">Có một món quà nhỏ đang chờ cậu mở đó. Ghép xong bức ảnh, lá thư sẽ hiện ra nhé!</p>
+
+    <button id="nutMoQua" class="nut nut--chinh nut--nhip" type="button">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="2"></rect><path d="M12 8v13M3 12h18"></path><path d="M12 8C10.5 4.5 7 4 6.5 6S9 8 12 8c3 0 6-0.5 5.5-2S13.5 4.5 12 8z"></path></svg>
+      Chạm để mở quà
+    </button>
+    <p class="chu-nho">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1v-6h3zM3 19a2 2 0 0 0 2 2h1v-6H3z"></path></svg>
+      Bật âm lượng lên để nghe nhạc nền nhé
+    </p>
+  </section>
+
+  <!-- ===== MÀN 2: GHÉP ẢNH ===== -->
+  <section id="manGhep" class="man">
+    <div class="thanh-tren">
+      <button class="nut-tron" type="button" data-ve="manMoQua" aria-label="Quay lại">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"></path><path d="M11 6l-6 6 6 6"></path></svg>
+      </button>
+      <div class="buoc"><span>BƯỚC 1 / 2</span><span class="buoc__vach"><i class="dat"></i><i></i></span></div>
+      <span class="cho-trong"></span>
+    </div>
+
+    <h1 class="chu-tay tieu-de-vua">Ghép lại bức ảnh nhé!</h1>
+    <p class="chu-mo doan-giua chu-14">Chạm vào ô nằm cạnh ô trống (hoặc vuốt) để trượt nó vào chỗ trống.</p>
+
+    <div class="khung-ghep">
+      <div id="banGhep" class="ban-ghep" role="group" aria-label="Bảng ghép ảnh"></div>
+      <div id="anhGocPhu" class="anh-goc-phu" aria-hidden="true"></div>
+      <div id="xongGhep" class="xong-ghep" hidden>
+        <div id="hoaRoiGhep" class="hoa-roi-lop" aria-hidden="true"></div>
+        <div class="xong-ghep__thanh">
+          <span class="chu-tay">Giỏi quá!</span>
+          <button id="nutTiepTuc" class="nut nut--chinh nut--nho" type="button">Tiếp tục
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="thong-so">
+      <button id="nutAnhGoc" class="anh-goc" type="button" aria-label="Giữ để xem ảnh gốc">
+        <img id="anhGocNho" alt="" src="">
+      </button>
+      <span class="thong-so__chu">
+        <span class="chu-12">Giữ ảnh để xem gốc</span>
+        <b id="soDung" aria-live="polite">Đúng 0/8 mảnh</b>
+      </span>
+      <span class="thong-so__buoc">
+        <span class="chu-12">Số bước</span>
+        <b id="soBuoc">0</b>
+      </span>
+      <button id="nutXaoLai" class="nut-tron" type="button" aria-label="Xáo lại các mảnh">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 15.5-6.3L21 8"></path><path d="M21 3v5h-5"></path><path d="M21 12a9 9 0 0 1-15.5 6.3L3 16"></path><path d="M3 21v-5h5"></path></svg>
+      </button>
+    </div>
+
+    <button id="nutBoQua" class="nut-chu" type="button">Khó quá? Xem luôn lá thư</button>
+  </section>
+
+  <!-- ===== MÀN 3: GHÉP XONG ===== -->
+  <section id="manXong" class="man">
+    <div class="thanh-tren">
+      <button class="nut-tron" type="button" data-ve="manGhep" aria-label="Quay lại trò ghép ảnh">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"></path><path d="M11 6l-6 6 6 6"></path></svg>
+      </button>
+      <div class="buoc"><span>HOÀN THÀNH</span><span class="buoc__vach"><i class="dat"></i><i></i></span></div>
+      <span class="cho-trong"></span>
+    </div>
+    <div id="hoaRoiXong" class="hoa-roi-lop hoa-roi-lop--toan" aria-hidden="true"></div>
+
+    <figure class="polaroid polaroid--lon">
+      <span class="bang-dinh" aria-hidden="true"></span>
+      <img id="anhXong" alt="Bức ảnh vừa ghép xong" src="">
+      <figcaption class="chu-tay"><span data-ten>bạn</span> · 20/10</figcaption>
+      <svg class="sao" width="44" height="44" viewBox="0 0 24 24" fill="#E9A93A" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z"></path></svg>
+    </figure>
+
+    <h1 class="chu-tay tieu-de-lon">Ghép xong rồi!</h1>
+    <p class="chu-mo doan-giua">Khéo tay ghê! Còn một lá thư nhỏ đang chờ cậu đọc nè.</p>
+
+    <button id="nutMoThu" class="nut nut--chinh" type="button">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg>
+      Mở lá thư
+    </button>
+  </section>
+
+  <!-- ===== MÀN 4: CÂY TRÁI TIM + LÁ THƯ ===== -->
+  <section id="manThu" class="man man--dai">
+    <div class="thanh-tren">
+      <button class="nut-tron" type="button" data-ve="manXong" aria-label="Quay lại">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"></path><path d="M11 6l-6 6 6 6"></path></svg>
+      </button>
+      <div class="buoc"><span>BƯỚC 2 / 2</span><span class="buoc__vach"><i class="dat"></i><i class="dat"></i></span></div>
+      <span class="cho-trong"></span>
+    </div>
+
+    <div class="thu-bo-cuc">
+
+      <!-- Cây mọc dần: mặt đất -> hạt -> thân đâm lên -> cành -> tán trái tim.
+           Chạm vào cây khi đang mọc để xem ngay. -->
+      <div id="canhCay" class="canh-cay" aria-hidden="true">
+        <svg class="canh-cay__than" viewBox="0 0 400 520" preserveAspectRatio="none">
+          <line class="mat-dat" x1="0" y1="500" x2="400" y2="500"></line>
+          <circle class="hat" cx="200" cy="497" r="7"></circle>
+          <!-- data-tre = giây bắt đầu mọc, data-tg = mọc trong bao lâu -->
+          <path class="ve" data-tre="1.2" data-tg="1.3" stroke-width="24" d="M200 500 C197 460 203 420 200 372"></path>
+          <path class="ve" data-tre="2.2" data-tg="0.9" stroke-width="15" d="M200 392 C199 360 202 335 200 300"></path>
+          <path class="ve" data-tre="2.4" data-tg="1.0" stroke-width="12" d="M200 392 C176 362 150 340 112 314"></path>
+          <path class="ve" data-tre="2.5" data-tg="1.0" stroke-width="12" d="M201 388 C228 358 256 338 292 312"></path>
+          <path class="ve" data-tre="2.9" data-tg="0.9" stroke-width="9" d="M200 312 C197 276 201 246 198 206"></path>
+          <path class="ve" data-tre="3.0" data-tg="0.8" stroke-width="7" d="M150 340 C136 308 128 284 122 254"></path>
+          <path class="ve" data-tre="3.1" data-tg="0.8" stroke-width="7" d="M256 338 C270 306 278 284 284 252"></path>
+          <path class="ve" data-tre="3.2" data-tg="0.8" stroke-width="6" d="M112 314 C102 306 94 298 86 286"></path>
+          <path class="ve" data-tre="3.3" data-tg="0.8" stroke-width="6" d="M292 312 C302 304 310 296 318 284"></path>
+          <path class="ve" data-tre="3.4" data-tg="0.7" stroke-width="5" d="M199 282 C178 258 164 240 152 214"></path>
+          <path class="ve" data-tre="3.5" data-tg="0.7" stroke-width="5" d="M200 270 C222 248 236 230 248 206"></path>
+          <path class="ve" data-tre="3.6" data-tg="0.6" stroke-width="4" d="M124 262 C110 246 98 232 90 212"></path>
+          <path class="ve" data-tre="3.6" data-tg="0.6" stroke-width="4" d="M282 262 C296 246 308 232 314 212"></path>
+        </svg>
+        <div id="tanCay" class="canh-cay__tan"></div>
+        <div id="timRoi" class="canh-cay__roi"></div>
+      </div>
+
+      <!-- Điện thoại: nhắc kéo xuống đọc thư (thư nằm dưới cây) -->
+      <button id="nutKeoXuong" class="keo-xuong" type="button" hidden>
+        Kéo xuống để đọc thư
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"></path><path d="M6 13l6 6 6-6"></path></svg>
+      </button>
+
+      <div id="cotThu" class="cot-thu" inert>
+        <div class="loi-mo-dau">
+          <h1 class="chu-tay tieu-de-lon">Chúc mừng 20/10</h1>
+          <p class="nhan-hong">NGÀY PHỤ NỮ VIỆT NAM</p>
+        </div>
+
+        <article id="laThu" class="la-thu" tabindex="0" role="button" aria-label="Lá thư, nhấn để hiện hết chữ">
+          <span class="con-dau con-dau--goc" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#hinhTim"></use></svg></span>
+          <h2 class="chu-tay la-thu__gui">Gửi <span data-ten>bạn</span>,</h2>
+          <div id="noiDungThu" class="la-thu__chu"></div>
+          <div id="kyTen" class="chu-tay la-thu__ky" hidden></div>
+          <p id="goiYDocNhanh" class="la-thu__goi-y">Chạm vào lá thư để hiện hết chữ</p>
+          <!-- Đọc xong thư mới hiện nút này; bấm vào thì ảnh bật ra lần lượt -->
+          <button id="nutXemAnh" class="nut nut--chinh nut--nho nut-xem-anh" type="button" hidden>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"></path><circle cx="12" cy="13.5" r="3.5"></circle></svg>
+            Xem ảnh
+          </button>
+        </article>
+
+        <div id="dayAnh" class="day-anh" hidden></div>
+      </div>
+    </div>
+
+    <div id="cuoiTrang" class="cuoi-trang" inert>
+      <button id="nutXemLai" class="nut nut--vien" type="button">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"></path><path d="M3 3v5h5"></path></svg>
+        Xem lại từ đầu
+      </button>
+      <p id="tenBaiHat" class="chu-nho" hidden>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+        <span></span>
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<!-- Xem ảnh to khi chạm vào ảnh polaroid -->
+<div id="hopAnh" class="hop-anh" role="dialog" aria-modal="true" aria-label="Xem ảnh to" hidden>
+  <figure>
+    <img id="hopAnhImg" alt="">
+    <button id="hopAnhDong" class="nut-tron hop-anh__dong" type="button" aria-label="Đóng ảnh">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+    </button>
+  </figure>
+</div>
+
+<!-- Hình trái tim dùng lại nhiều chỗ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="hinhTim" viewBox="0 0 24 24"><path fill="currentColor" d="M12 21s-7.5-4.6-7.5-10.4A4.4 4.4 0 0 1 12 7.4a4.4 4.4 0 0 1 7.5 3.2C19.5 16.4 12 21 12 21z"></path></symbol>
+</svg>
+
+<script src="cau-hinh.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

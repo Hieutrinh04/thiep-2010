@@ -1,0 +1,7 @@
+# Thư mục công cụ của Claude Code (không cần đẩy lên hosting)
+.claude/
+
+# Rác hệ điều hành
+Thumbs.db
+desktop.ini
+.DS_Store
